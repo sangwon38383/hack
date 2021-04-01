@@ -11,9 +11,8 @@ import FinanceDataReader as fdr
 import time
 
 
-#일단 S&P500 기업들만
 spr = fdr.StockListing('S&P500')
-spr_key = spr['Name'].drop([0])
+spr_key = spr['Symbol'].drop([0])
 
 
 finance_data = pd.Series([])
@@ -21,49 +20,56 @@ rating_data = pd.Series([])
 
 
 for s in spr_key:    
-    url = 'https://www.sec.gov/edgar/searchedgar/companysearch.html'
+    url = 'https://finviz.com/'
     driver = webdriver.Chrome('/Users/sangwon/Downloads/chromedriver') 
     driver.get(url) 
     time.sleep(5)
-    driver.find_element(By.ID, "company").send_keys(s)
-    driver.find_element(By.ID, "search_button").click()
-    driver.implicitly_wait(10)
-    try:
-        driver.find_element(By.ID, "type").send_keys("10-Q")
-    except:
-        try:
-            driver.find_element(By.ID, 'seriesDiv').find_element(By.TAG_NAME, 'a').click()    
-            time.sleep(5)
-            driver.find_element(By.ID, "type").send_keys("10-Q")
-        except:
-            continue
-            fin = pd.Series(['Nan'])
-            finance_data = finance_data.append(fin)
+    driver.find_element_by_xpath("//input[@placeholder='Search ticker, company or profile']").send_keys(s)   
+    driver.find_element_by_xpath("//span[@class='fa fa-search']").click()
     time.sleep(5)
-    driver.find_element_by_xpath("//input[@value='Search']").click()
-    time.sleep(5) 
-    driver.find_element(By.ID, "documentsbutton").click()
-    time.sleep(5)
-    elelist = driver.find_elements(By.ID, "formDiv")
-    elelist[1].find_element_by_tag_name('a').click()
-    time.sleep(5)
-    try:
-        fin = []
-        assets = driver.find_element_by_name('us-gaap:Assets').text 
-        liabilities = driver.find_element_by_name('us-gaap:Liabilities').text 
-        netincome = driver.find_element_by_name('us-gaap:NetIncomeLoss').text
-        print(assets)
-        print(liabilities)
-        print(netincome)
-        fin = fin.append(assets)
-        fin = fin.append(liabilities)
-        fin = fin.append(netincome)
-        fin = pd.Series([fin]) 
-        finance_data = finance_data.append(fin)
-    except:
+    tbl = driver.find_element(By.CLASS_NAME, 'snapshot-table2').text
+    cand = tbl.split()
+    
+    if cand[cand.index('ROE')+1] != 'ROI':
+        roe = cand[cand.index('ROE')+1]
+        roe = roe.split('%')
+        roe = float(roe[0])
+    else:
         fin = pd.Series(['Nan'])
         finance_data = finance_data.append(fin)
+        continue 
 
+    if cand[cand.index('ROA')+1] != 'ROE':
+        roa = cand[cand.index('ROA')+1]
+        roa = roa.split('%')
+        roa = float(roa[0])
+    else:
+        fin = pd.Series(['Nan'])
+        finance_data = finance_data.append(fin)
+        continue
+
+    if cand[cand.index('Debt/Eq')+1] != 'LT':
+        debt_eq = cand[cand.index('Debt/Eq')+1]
+        debt_eq = float(debt_eq)
+    else:
+        fin = pd.Series(['Nan'])
+        finance_data = finance_data.append(fin)
+        continue
+
+    if cand[cand.index('LT')+2] != 'SMA20':
+        lt_debt_eq = cand[cand.index('LT')+2]
+        lt_debt_eq = float(debt_eq)
+    else:
+        fin = pd.Series(['Nan'])
+        finance_data = finance_data.append(fin)
+        continue
+
+    fin = [roe, roa, debt_eq, lt_debt_eq]
+
+    print(fin)
+    fin = pd.Series([fin]) 
+    finance_data = finance_data.append(fin)
+    print(finance_data)
 
 #신용평가 - S&P에서 수집
 
@@ -138,8 +144,6 @@ for m in macro_data:
     data = torch.cat((data, torch.Tensor([m]*len_comp_list)), dim=1)
     
 data_dim = macro_data = macro_data['Unnamed: 11'].drop([0, 9]) 
-
-#현재 단순한 fully connected network 임. 오늘 내 cnn 기반으로 수정
 
 
 class MsDataset(Dataset):
