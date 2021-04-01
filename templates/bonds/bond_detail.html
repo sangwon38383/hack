@@ -1,0 +1,12 @@
+{% extends 'bonds/base.html' %}
+
+{% block content %}
+    <div class="bond">
+            <div class="date">
+                {{ bond.published_date }}
+            </div>
+        <h1>{{ bond.company }}</h1>
+        <h1>{{ bond.price }}</h1> 
+        <h1>{{ bond.roe }}</h1>
+    </div>
+{% endblock %}

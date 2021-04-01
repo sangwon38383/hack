@@ -1,0 +1,14 @@
+{% extends 'bonds/base.html' %}
+
+{% block content %}
+<p class="headerTitle">채권매각</p>
+    <div class="bond">
+           <form method = "POST" class = "post-form">
+        {% csrf_token %}
+        {{ bond_sell_form.as_p }}
+        <button type="submit" class="save btn btn-default">Save</button>
+    </form>
+    </div>
+
+
+{% endblock %}

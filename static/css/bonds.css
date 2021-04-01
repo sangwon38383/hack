@@ -1,0 +1,278 @@
+.post-form textarea, .post-form input{
+    width: 100%;
+}
+
+body{
+  margin: 0;
+  height: 100vh;
+}
+
+h2{
+  text-align: center;
+  font-size: 35px;
+  margin-top: 0;
+  padding-bottom: 30px;
+}
+
+a{
+  text-decoration: none;
+  color: inherit;
+  }
+
+  /* login */
+.login{
+  padding: 150px;
+  height: calc(100% - 450px);
+  display: block;
+  text-align: center;
+  }
+
+#logInput:focus{
+  outline: none;
+}
+#logInput{
+  display: block;
+  margin: 0 auto;
+  width: 300px;
+  height: 30px;
+  border: 2px solid black;
+  border-style: none none solid none;
+  margin-top: 50px;
+}
+
+.button:focus{
+  outline: none;
+}
+.button:hover{
+  opacity: 40%;
+}
+.button{
+  display: block;
+  margin: 0 auto;
+  border: none;
+  background: none;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+
+.logButton{
+  margin: 6px auto;
+  width: 300px;
+  height: 30px;
+  text-align: center;
+  line-height: 30px;
+  font-size: 14px;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
+#logbtn{
+  margin-top: 35px;
+  background-color: black;
+  color:white;
+}
+
+  /* menuLeft */
+
+.menuCol{
+  position: fixed;
+  width: 180px;
+  height: calc(100% - 150px);
+  background-color: #c4c4c4;
+}
+
+.NPLmanage:hover{
+  background-color: #979797;
+  color: white;
+}
+.NPLmanage{
+  position: fixed;
+  top:100px;
+  left: 0;
+  width: inherit;
+  height: 80px;
+  border-style: solid none solid none;
+  border-width: 2px;
+  border-color: white;
+}
+
+.NPLadd:hover{
+  background-color: #979797;
+  color: white;
+}
+.NPLadd{
+  position: fixed;
+  top:184px;
+  left: 0;
+  width: inherit;
+  height: 80px;
+  border-style: solid none solid none;
+  border-width: 2px;
+  border-color: white;
+}
+
+.NPLbuy:hover{
+  background-color: #979797;
+  color: white;
+}
+.NPLbuy{
+  position: fixed;
+  top:268px;
+  left: 0;
+  width: inherit;
+  height: 80px;
+  border-style: solid none solid none;
+  border-width: 2px;
+  border-color: white;
+}
+
+/* header */
+.headerCol{
+  position: fixed;
+  left: 180px;
+  top: 0;
+  width: calc(100% - 180px);
+  height: 100px;
+  background-color: #e0e0e0;
+}
+
+.headerCol input[type=text] {
+  position: absolute;
+  margin: 0;
+  right: 32px;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 6px 6px 6px 28px;
+  font-size: 17px;
+  width: 150px;
+  border-style: none none solid none;
+}
+.search-icon{
+  background: url(source/zoom-out.png) no-repeat left;
+  background-size: 20px
+}
+
+.addButton:hover{
+  background-color: #4a4a4a;
+  border-color: #4a4a4a;
+  color: white;
+}
+.addButton{
+  display: inline-block;
+  position: absolute;
+  margin: 0;
+  right: 32px;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 6px;
+  font-size: 16px;
+  color: #979797;
+  width: 120px;
+  border: 2px solid #979797;
+  border-radius: 20px;
+  background: none;
+  text-align: center;
+}
+
+img{
+  width: 20px;
+  margin-right: 8px;
+  vertical-align: text-bottom;
+}
+
+/* mainBody */
+.inputBody{
+  position: absolute;
+  top: 100px;
+  left: 180px;
+  width: calc(100% - 244px);
+  height: calc(100% - 314px);
+  padding: 32px;
+  overflow-y: scroll;
+}
+
+table{
+  width: 100%;
+  border: 2px solid #979797;
+  border-style: solid none none none;
+  padding: 8px 0px;
+
+}
+
+/* nth-child(1) = the first td in each tr */
+td:nth-child(1) {
+  width: 150px;
+  padding: 8px 0px;
+  }
+
+/* the second */
+td:nth-child(2) {
+  width: 8vw;
+}
+
+/* the third */
+td:nth-child(3) {
+  width: 8vw;
+}
+
+/* the fourth */
+td:nth-child(4) {
+  width: 8vw;
+}
+
+/* the fifth */
+td:nth-child(5) {
+  width: 8vw;
+}
+
+/* the sixth */
+td:nth-child(6) {
+  width: 8vw;
+}
+
+/* the seventh */
+td:nth-child(7) {
+  width: 8vw;
+}
+
+#addItem{
+  width: inherit;
+  border: 1px solid #cecece;
+}
+
+
+/* footer */
+.footer{
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100vw;
+  min-height: 150px;
+  background-color: #292c34;
+}
+
+
+/* fontCSS */
+
+.headerTitle{
+  margin: 0px 0px 0px 32px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 20px;
+}
+
+.menuButton{
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.bond{
+position: fixed;
+top: 20%;
+left: 10%;
+}
+

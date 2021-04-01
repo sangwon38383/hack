@@ -1,0 +1,16 @@
+{% extends 'bonds/base.html' %}
+{% block content %}
+<div class="headerCol">
+    <p class="headerTitle">채권구매</p>
+    <input type="text" placeholder="Search.." class="search-icon">
+  </div>
+  <div class = 'bond'>
+   {% for bond in bonds %}
+      {{bond.published_date}}
+      <h1><a href="post/{{bond.pk}}">{{bond.company}}</a></h1>
+   {% endfor %}
+  </div>
+      <div class="footer">
+      </div>
+
+{% endblock %}

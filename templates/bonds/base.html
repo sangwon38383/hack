@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta content="ie=edge" http-equiv="x-ua-compatible">
+    <title>index</title>
+    <meta content="a repository for sample code" name="description">
+    <meta content="width = device-width, initial-scale = 1" name="viewport">
+    <link rel='stylesheet' href="{% static 'css/bonds.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'bootstrap.css' %}">
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.min.js"
+      integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+      crossorigin="anonymous">
+    </script>
+    <script type="text/javascript"></script>
+    <script src="javascript.js"></script>
+
+</head>
+<body>
+    <div>
+        <a href="{% url 'post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
+    </div>
+    <div class="menuCol">
+        <div class="NPLmanage">
+            <a href="{% url 'bond_list' %}"><p class="menuButton">채권관리</p></a>
+        </div>
+        <div class="NPLadd">
+            <a href="{% url 'post_new' %}"><p class="menuButton">채권등록</p></a>
+        </div>
+        <div class="NPLbuy">
+            <a href="{% url 'bond_buy' %}"><p class="menuButton">채권구매</p></a>
+        </div>
+    </div>
+
+{% block content %}
+{% endblock %}
+</body>
+
+</html>
