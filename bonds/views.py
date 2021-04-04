@@ -4,6 +4,10 @@ from .models import Bond, BondOther
 from .forms import BondForm, SellForm
 from .text_analysis import *
 
+def default_bond_list(request):
+   bonds = Bond.objects.filter(price__contains = 'Sell').order_by('published_date')
+   return render(request, 'bonds/def_bond_list.html', {'bonds':bonds})
+
 def bond_list(request):
    bonds = Bond.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
    return render(request, 'bonds/bond_list.html', {'bonds':bonds})
