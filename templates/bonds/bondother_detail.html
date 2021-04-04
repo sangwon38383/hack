@@ -11,7 +11,8 @@
         <h1>Company Debt/Eq: {{ bond.debt_eq }}</h1>
         <h1>Company Long Term Debt/Eq: {{ bond.long_debt_eq }}</h1>
         <h1>Estimated Default Rate: {{ bond.estimated_rate }}</h1>
-        <form method = "POST" class = "post-form">
+<h1>Estimated Value: {{ bond.value }}</h1>        
+<form method = "POST" class = "post-form">
         {% csrf_token %}
         {{ form.as_p }}
         <a href="{% url 'contract_buy' %}"><p class="menuButton">BID</p></a>

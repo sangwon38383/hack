@@ -25,6 +25,7 @@ def post_new(request):
             bond.author = request.user 
             bond.published_date = timezone.now()
             bond.estimated_rate = do_anal(bond.company)
+            bond.value = (1-float(bond.estimated_rate))*float(bond.price)
             bond.save()
             return redirect('bond_detail', pk = bond.pk) 
     else:
@@ -40,7 +41,7 @@ def bond_detail(request, pk):
 def bondother_detail(request, pk):
     bond = get_object_or_404(BondOther, pk=pk)
     form = BidForm()
-    return render(request, 'bonds/bond_detail.html', {'bond': bond, 'form' : form})
+    return render(request, 'bonds/bondother_detail.html', {'bond': bond, 'form' : form})
 
 def contract_sell(request):
     bonds = Bond.objects.filter(published_date__lte=timezone.now()).order_by('published_date')

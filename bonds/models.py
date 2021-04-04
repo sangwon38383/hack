@@ -22,8 +22,10 @@ class Bond(models.Model):
     def register(self):
         self.published_date = timezone.now()
         self.estimated_rate = do_anal(self.company)
-        value = (1-float(self.estimated_rate))*float(self.price)
         self.save()
+    
+    def value_find(self):
+        self.value = (1-float(self.estimated_rate))*float(self.price)
 
     def __str__(self):
         return self.company
@@ -48,8 +50,11 @@ class BondOther(models.Model):
     def register(self):
         self.published_date = timezone.now()
         self.estimated_rate = do_anal(self.company)
-        value = (1-float(self.estimated_rate))*float(self.price)
+        self.value = (1-float(self.estimated_rate))*float(self.price)
         self.save()
+
+    def value_find(self):
+        self.value = (1-float(self.estimated_rate))*float(self.price)
 
     def __str__(self):
         return self.company 
