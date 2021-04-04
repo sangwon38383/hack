@@ -1,5 +1,16 @@
 from django import forms 
-from .models import Bond 
+from .models import Bond, BondOther 
+
+class BidForm(forms.ModelForm):
+    class Meta:
+        model = BondOther
+        fields = ('bid',)
+        widgets = {
+            'bid' : forms.TextInput(
+attrs={'class': 'form-control', 'style': 'width: 70%; top:130px; left: 200px;', 'placeholder': 'INPUT YOUR BID'}
+),}
+
+
 
 class BondForm(forms.ModelForm):
 
@@ -8,22 +19,22 @@ class BondForm(forms.ModelForm):
         fields = ('company', 'price', 'roe', 'roa', 'debt_eq', 'long_debt_eq')
         widgets = {
             'company': forms.TextInput(
-                attrs={'class': 'form-control', 'style': 'width: 70%; top:130px; left: 200px;', 'placeholder': '기업명을 입력하세요.'}
+                attrs={'class': 'form-control', 'style': 'width: 70%; top:130px; left: 200px;', 'placeholder': 'INPUT COMPANY NAME'}
             ),
             'price': forms.TextInput(
-                attrs={'class': 'form-control', 'style': 'width: 70%; top:230px; left: 200px;', 'placeholder': '채권가액을 입력하세요.'}
+                attrs={'class': 'form-control', 'style': 'width: 70%; top:230px; left: 200px;', 'placeholder': 'INPUT PAR VALUE'}
             ),
             'roe': forms.TextInput(
-                attrs={'class': 'form-control', 'style': 'width: 70%; top:330px; left: 200px;', 'placeholder': 'roe를 입력하세요.'}
+                attrs={'class': 'form-control', 'style': 'width: 70%; top:330px; left: 200px;', 'placeholder': 'INPUT COMPANY ROE'}
             ),
             'roa': forms.TextInput(
-                attrs={'class': 'form-control', 'style': 'width: 70%; top:430px; left: 200px;', 'placeholder': 'roa를 입력하세요.'}
+                attrs={'class': 'form-control', 'style': 'width: 70%; top:430px; left: 200px;', 'placeholder': 'INPUT COMPANY ROA'}
             ),
             'debt_eq': forms.TextInput(
-                attrs={'class': 'form-control', 'style': 'width: 70%; top:530px; left: 200px;', 'placeholder': '자산채무비율을 입력하세요.'}
+                attrs={'class': 'form-control', 'style': 'width: 70%; top:530px; left: 200px;', 'placeholder': 'INPUT COMPANY DEBT/EQ'}
             ),
             'long_debt_eq': forms.TextInput(
-                attrs={'class': 'form-control', 'style': 'width: 70%; top:630px; left: 200px;', 'placeholder': '장기자산채무비율을 입력하세요.'}
+                attrs={'class': 'form-control', 'style': 'width: 70%; top:630px; left: 200px;', 'placeholder': 'INPUT COMPANY LONG TERM DEBT/EQ'}
             ),
         }
 
@@ -32,8 +43,8 @@ class SellForm(forms.ModelForm):
 
     class Meta:
         model = Bond 
-        fields = ('price',)
+        fields = ('minprice',)
         widgets = {
             'price': forms.TextInput(
-                attrs={'class': 'form-control', 'style': 'width: 70%; top:130px; left: 200px;', 'placeholder': '최소가격을 입력하세요'}
+                attrs={'class': 'form-control', 'style': 'width: 70%; top:130px; left: 200px;', 'placeholder': 'INPUT MIN PRICE'}
             ),}

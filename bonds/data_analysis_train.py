@@ -9,7 +9,7 @@ import torch.nn.functional as F
 from torch.utils.data import Dataset, DataLoader
 import FinanceDataReader as fdr  
 import time
-
+#from .text_analysis import *
 
 spr = fdr.StockListing('S&P500')
 spr_key = spr['Symbol'].drop([0])
@@ -33,7 +33,7 @@ for s in spr_key:
     if cand[cand.index('ROE')+1] != 'ROI':
         roe = cand[cand.index('ROE')+1]
         roe = roe.split('%')
-        roe = float(roe[0])
+        roe = roe[0]
     else:
         fin = pd.Series(['Nan'])
         finance_data = finance_data.append(fin)
@@ -42,7 +42,7 @@ for s in spr_key:
     if cand[cand.index('ROA')+1] != 'ROE':
         roa = cand[cand.index('ROA')+1]
         roa = roa.split('%')
-        roa = float(roa[0])
+        roa = roa[0]
     else:
         fin = pd.Series(['Nan'])
         finance_data = finance_data.append(fin)
@@ -50,7 +50,7 @@ for s in spr_key:
 
     if cand[cand.index('Debt/Eq')+1] != 'LT':
         debt_eq = cand[cand.index('Debt/Eq')+1]
-        debt_eq = float(debt_eq)
+        
     else:
         fin = pd.Series(['Nan'])
         finance_data = finance_data.append(fin)
@@ -58,7 +58,7 @@ for s in spr_key:
 
     if cand[cand.index('LT')+2] != 'SMA20':
         lt_debt_eq = cand[cand.index('LT')+2]
-        lt_debt_eq = float(debt_eq)
+        
     else:
         fin = pd.Series(['Nan'])
         finance_data = finance_data.append(fin)
@@ -70,6 +70,8 @@ for s in spr_key:
     fin = pd.Series([fin]) 
     finance_data = finance_data.append(fin)
     print(finance_data)
+
+finance_data.to_csv("./findata_micro, header=False, index=False")
 
 #신용평가 - S&P에서 수집
 
@@ -91,7 +93,6 @@ for s in spr_key:
     except:
         rate = pd.Series(['Nan'])
         rating_data = rating_data.append(rate)
-
 
 
 fin_data = pd.Series([])
@@ -139,11 +140,11 @@ len_comp_list = len(fin_data)
 #임시로 2019년 데이터만 사용  
 macro_data = pd.read_excel('./macro_data.xlsx') 
 macro_data = macro_data['Unnamed: 11'].drop([0, 9])
-
 for m in macro_data:
     data = torch.cat((data, torch.Tensor([m]*len_comp_list)), dim=1)
-    
 data_dim = macro_data = macro_data['Unnamed: 11'].drop([0, 9]) 
+
+
 
 
 class MsDataset(Dataset):

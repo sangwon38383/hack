@@ -5,8 +5,20 @@
             <div class="date">
                 {{ bond.published_date }}
             </div>
-        <h1>{{ bond.company }}</h1>
-        <h1>{{ bond.price }}</h1> 
-        <h1>{{ bond.roe }}</h1>
+        <h1>Company name: {{ bond.company }}</h1>
+        <h1>Bond Par Value: {{ bond.price }}</h1> 
+        <h1>Company ROE: {{ bond.roe }}</h1>
+        <h1>Company ROA: {{ bond.roa }}</h1>
+        <h1>Company Debt/Eq: {{ bond.debt_eq }}</h1>
+        <h1>Company Long Term Debt/Eq: {{ bond.long_debt_eq }}</h1>
+        
+        <h1>Estimated Default Rate : {{ bond.estimated_rate }}</h1>
+
+<form method = "POST" class = "post-form">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="save btn btn-default">Save</button>
+    </form>
+
     </div>
 {% endblock %}
