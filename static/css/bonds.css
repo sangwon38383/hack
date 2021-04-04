@@ -2,9 +2,57 @@
     width: 100%;
 }
 
+.post-form{
+  margin-top: 132px;
+  margin-left: 32px;
+}
+
+.post-form > p{
+  margin-bottom: 78px;
+  font-size: 18px;
+}
+
+.post-form > .save{
+  width: 100px;
+  height: 30px;
+  position: absolute;
+  left: 50%;
+  background-color: #f3f3f3;
+  color: black;
+  border-color: black;
+  border-radius: 8px;
+
+}
+
+/* login page  */
+.my-3{
+  position: absolute;
+  margin: 0;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.my-3 > .post-form{
+  margin: 0;
+}
+
+.my-3 > .post-form > .form-group{
+  margin-bottom: 16px;
+}
+
+.my-3 > .post-form > .btn{
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 8px 0 0 0;
+  }
+
 body{
   margin: 0;
   height: 100vh;
+  background: #f3f3f3;
+  font-family: sans-serif;
 }
 
 h2{
@@ -77,13 +125,13 @@ a{
 .menuCol{
   position: fixed;
   width: 180px;
-  height: calc(100% - 150px);
-  background-color: #c4c4c4;
+  height: 100%;
+  background-color: #06042d;
 }
 
-.NPLmanage:hover{
-  background-color: #979797;
-  color: white;
+.NPLmanage:hover .menuButton{
+  /* background-color: #979797; */
+  color: #00ff8b;
 }
 .NPLmanage{
   position: fixed;
@@ -91,14 +139,14 @@ a{
   left: 0;
   width: inherit;
   height: 80px;
-  border-style: solid none solid none;
+  border-style: solid none none none;
   border-width: 2px;
   border-color: white;
 }
 
-.NPLadd:hover{
-  background-color: #979797;
-  color: white;
+.NPLadd:hover .menuButton{
+  /* background-color: #979797; */
+  color: #00ff8b;
 }
 .NPLadd{
   position: fixed;
@@ -106,14 +154,14 @@ a{
   left: 0;
   width: inherit;
   height: 80px;
-  border-style: solid none solid none;
+  border-style: solid none none none;
   border-width: 2px;
   border-color: white;
 }
 
-.NPLbuy:hover{
-  background-color: #979797;
-  color: white;
+.NPLbuy:hover .menuButton{
+  /* background-color: #979797; */
+  color: #00ff8b;
 }
 .NPLbuy{
   position: fixed;
@@ -121,14 +169,14 @@ a{
   left: 0;
   width: inherit;
   height: 80px;
-  border-style: solid none solid none;
+  border-style: solid none none none;
   border-width: 2px;
   border-color: white;
 }
 
-.NPLdef:hover{
-  background-color: #979797;
-  color: white;
+.NPLdef:hover .menuButton{
+  /* background-color: #979797; */
+  color: #00ff8b;
 }
 .NPLdef{
   position: fixed;
@@ -149,7 +197,9 @@ a{
   top: 0;
   width: calc(100% - 180px);
   height: 100px;
-  background-color: #e0e0e0;
+  background-color: #f3f3f3;
+  /* border-bottom: 3px solid #ffffff; */
+
 }
 
 .headerCol input[type=text] {
@@ -165,7 +215,7 @@ a{
 }
 .search-icon{
   background: url(source/zoom-out.png) no-repeat left;
-  background-size: 20px
+  background-size: 20px;
 }
 
 .addButton:hover{
@@ -188,6 +238,8 @@ a{
   border-radius: 20px;
   background: none;
   text-align: center;
+  background: url(source/Add.png) no-repeat left;
+  background-size: 20px;
 }
 
 img{
@@ -279,6 +331,7 @@ td:nth-child(7) {
 }
 
 .menuButton{
+  color: white;
   margin: 0;
   position: absolute;
   top: 50%;
@@ -288,7 +341,30 @@ td:nth-child(7) {
 
 .bond{
 position: fixed;
-top: 20%;
-left: 10%;
+top: 12%;
+left: 180px;
+margin-left: 32px;
 }
 
+.bond > .post-form{
+  margin: 0;
+}
+
+.bond > .post-form > p{
+  margin: 0;
+}
+
+.bond > .post-form > a > .menuButton{
+  position: absolute;
+  margin: 16px 0 0 0;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  color: black;
+  width: 100px;
+  height: 30px;
+  border: 2px solid black;
+  border-radius: 8px;
+  text-align: center;
+  line-height: 30px;
+}
