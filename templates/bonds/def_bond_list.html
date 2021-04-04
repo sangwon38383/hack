@@ -1,0 +1,19 @@
+{% extends 'bonds/base.html' %}
+{% block content %}
+  <div class="headerCol">
+    <p class="headerTitle">부실채권관리</p>
+    <input type="text" placeholder="Search.." class="search-icon">
+  </div>
+  <div class = 'bond'>
+   <h1>부실채권목록<h1>
+   {% for bond in bonds %}
+      {{bond.published_date}}
+      <h1><a href="post/{{bond.pk}}">{{bond.company}}</a></h1>
+   {% endfor %}
+
+   <h1>부실채권액: 0 $<h1>
+
+  </div>
+      <div class="footer">
+      </div>
+{% endblock %}
