@@ -34,30 +34,12 @@ def post_new(request):
 
 def bond_detail(request, pk):
     bond = get_object_or_404(Bond, pk=pk)
-    if request.method == "POST":
-        form = SellForm(request.POST)
-        if form.is_valid():
-            bond = form.save(commit=False)
-            bond.author = request.user
-            bond.published_date = timezone.now()
-            bond.save()
-            return redirect('contract_sell', pk = bond.pk)
-    else:
-        form = SellForm()
+    form = SellForm()
     return render(request, 'bonds/bond_detail.html', {'bond': bond, 'form' : form})
 
 def bondother_detail(request, pk):
     bond = get_object_or_404(BondOther, pk=pk)
-    if request.method == "POST":
-        form = BidForm(request.POST)
-        if form.is_valid():
-            bond = form.save(commit=False)
-            bond.author = request.user
-            bond.published_date = timezone.now()
-            bond.save()
-            return redirect('contract_buy', pk = bond.pk)
-    else:
-        form = BidForm()
+    form = BidForm()
     return render(request, 'bonds/bond_detail.html', {'bond': bond, 'form' : form})
 
 def contract_sell(request, pk):
