@@ -126,6 +126,22 @@ a{
   border-color: white;
 }
 
+.NPLdef:hover{
+  background-color: #979797;
+  color: white;
+}
+.NPLdef{
+  position: fixed;
+  top:352px;
+  left: 0;
+  width: inherit;
+  height: 80px;
+  border-style: solid none solid none;
+  border-width: 2px;
+  border-color: white;
+}
+
+
 /* header */
 .headerCol{
   position: fixed;

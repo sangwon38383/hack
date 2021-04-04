@@ -24,13 +24,16 @@
     </div>
     <div class="menuCol">
         <div class="NPLmanage">
-            <a href="{% url 'bond_list' %}"><p class="menuButton">채권관리</p></a>
+            <a href="{% url 'bond_list' %}"><p class="menuButton">BOND LIST</p></a>
         </div>
         <div class="NPLadd">
-            <a href="{% url 'post_new' %}"><p class="menuButton">채권등록</p></a>
+            <a href="{% url 'post_new' %}"><p class="menuButton">BOND REGISTER</p></a>
         </div>
         <div class="NPLbuy">
-            <a href="{% url 'bond_buy' %}"><p class="menuButton">채권구매</p></a>
+            <a href="{% url 'bond_buy' %}"><p class="menuButton">BOND MARKET</p></a>
+        </div>
+        <div class="NPLdef">
+            <a href="{% url 'default_bond_list' %}"><p class="menuButton">DEFAULT BONDS</p></a>
         </div>
     </div>
 

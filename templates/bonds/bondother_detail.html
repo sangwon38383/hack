@@ -14,7 +14,7 @@
         <form method = "POST" class = "post-form">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit" class="save btn btn-default">Bid</button>
+        <a href="{% url 'contract_buy' %}"><p class="menuButton">BID</p></a>
     </form>
     </div>
 {% endblock %}
