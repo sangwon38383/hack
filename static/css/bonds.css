@@ -236,10 +236,8 @@ a{
   width: 120px;
   border: 2px solid #979797;
   border-radius: 20px;
-  background: none;
+  /* background: none; */
   text-align: center;
-  background: url(source/Add.png) no-repeat left;
-  background-size: 20px;
 }
 
 img{

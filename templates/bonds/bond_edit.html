@@ -2,11 +2,11 @@
 {% block content %}
   <div class="headerCol">
     <p class="headerTitle"></p>
-    <div class="addButton"><img src="source/Add.png">Add new</div>
+    <div class="addButton">Add new</div>
     <form method = "POST" class = "post-form">
         {% csrf_token %}
         {{ form.as_p }}
         <button type="submit" class="save btn btn-default">Save</button>
     </form>
-  </div>    
+  </div>
 {% endblock %}
